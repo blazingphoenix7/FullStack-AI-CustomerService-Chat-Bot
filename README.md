@@ -114,8 +114,8 @@ This section provides a step-by-step guide to deploy the customer service chatbo
 First, clone the repository containing the project files:
 
 ```sh
-git clone https://github.com/yourusername/finetuned_chatbot-main.git
-cd finetuned_chatbot-main
+git clone https://github.com/blazingphoenix7/FullStack-AI-CustomerService-ChatBot.git
+cd FullStack-AI-CustomerService-ChatBot-main
 ```
 
 Ensure the directory structure includes both the backend and frontend folders:
