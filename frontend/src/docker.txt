@@ -1,0 +1,78 @@
+# File: Dockerfile (Backend - Flask)
+
+# Use official Python runtime as a parent image
+FROM python:3.9
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY requirements.txt /app
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code into the container
+COPY . /app
+
+# Expose port 5000 for the Flask app
+EXPOSE 5000
+
+# Run the Flask server
+CMD ["python", "app.py"]
+
+
+# File: requirements.txt (Backend Dependencies)
+
+Flask==2.1.1
+openai==0.11.4
+
+
+# File: frontend/Dockerfile (Frontend - React)
+
+# Use an official Node runtime as a parent image
+FROM node:16
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json into the container
+COPY package*.json ./
+
+# Install the dependencies
+RUN npm install
+
+# Copy the rest of the application code into the container
+COPY . .
+
+# Build the React app
+RUN npm run build
+
+# Install serve to serve the React app
+RUN npm install -g serve
+
+# Expose port 3000 for the React app
+EXPOSE 3000
+
+# Start the React app
+CMD ["serve", "-s", "build"]
+
+
+# File: docker-compose.yml (Container Orchestration)
+
+version: '3.8'
+
+services:
+  backend:
+    build: ./
+    ports:
+      - "5000:5000"
+    environment:
+      - OPENAI_API_KEY=your-api-key-here
+  
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
