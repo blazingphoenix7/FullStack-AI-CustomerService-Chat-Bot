@@ -26,8 +26,8 @@ To set up the chatbot, clone this repository and install the required dependenci
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/finetuned_chatbot-main.git
-   cd finetuned_chatbot-main
+   git clone https://github.com/blazingphoenix7/FullStack-AI-CustomerService-ChatBot.git
+   cd FullStack-AI-CustomerService-ChatBot-main
    ```
 
 2. Install the necessary dependencies:
